@@ -12,6 +12,7 @@ import { Button } from "./ui/button";
 import { useState } from "react";
 import { useAction, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import ThemeToggle from "./themeToggle";
 
 export default function TestimonialForm() {
   const submitTestimonial = useMutation(api.testimonial.submitTestimonial);
@@ -103,7 +104,7 @@ export default function TestimonialForm() {
   //   setFileInputKey((prev) => prev + 1);
   // };
   return (
-    <div className="w-full max-w-6xl bg-white/10 p-6 rounded-2xl backdrop-blur-2xl backdrop-brightness-150">
+    <div className="w-full max-w-6xl bg-white dark:bg-slate-900  duration-1600 text-black p-6 rounded-2xl backdrop-blur-2xl backdrop-brightness-150 ">
       {/* background decoration  */}
       {/* <div className="absolute inset-0 overflow-hidden opacity-30">
         <div className="absolute top-1/4 -right-20 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
@@ -113,34 +114,32 @@ export default function TestimonialForm() {
         ></div>
       </div> */}
 
-      <div className="relative w-full max-w-6xl">
+      <div className="relative w-full  max-w-6xl dark:text-white">
         <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 p-8">
           {/* header
            */}
           <div className=" text-center mb-8">
             <div className="flex flex-col items-center justify-center ">
               <div className="flex gap-3 items-center justify-center">
-                <MessageSquare className=" text-blue-500 w-8 h-8" />
-                <h1 className="text-3xl font-bold text-blue-500">
+                <MessageSquare className=" text-[#003cd8] dark:text-blue-400 w-8 h-8" />
+                <h1 className="text-3xl font-bold text-[#003cd8] dark:text-blue-400">
                   Share Your experience
                 </h1>
               </div>
-              <p className="text-blue-400 mt-2">
+              <p className="text-[#003dd8b7] dark:text-blue-300 mt-2">
                 Your feedback helps us improve and grow
               </p>
             </div>
+            <ThemeToggle />
           </div>
 
           <div className="space-y-6">
             <div className="flex flex-col gap-3">
-              <label
-                htmlFor="name"
-                className="block text-sm font-bold text-gray-200"
-              >
+              <label htmlFor="name" className="block text-xl font-bold ">
                 Name:
               </label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-200" />
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   id="name"
                   name="name"
@@ -148,20 +147,17 @@ export default function TestimonialForm() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full pl-11 pr-4 py-4 bg-white/5 border border-black rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-[18px]"
                 />
               </div>
             </div>
             {/* Email  */}
             <div className="flex flex-col gap-3">
-              <label
-                htmlFor="email"
-                className="block text-sm font-bold text-gray-200"
-              >
+              <label htmlFor="email" className="block text-xl font-bold ">
                 Email:
               </label>
               <div className="relative">
-                <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-200" />
+                <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   id="email"
                   name="email"
@@ -169,21 +165,18 @@ export default function TestimonialForm() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="example@gmail.com"
-                  className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full pl-11 pr-4 py-4 bg-white/5 border border-black rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-[18px]"
                 />
               </div>
             </div>
 
             {/* Company name  */}
             <div className="flex flex-col gap-3">
-              <label
-                htmlFor="companyName"
-                className="block text-sm font-bold text-gray-200"
-              >
+              <label htmlFor="companyName" className="block text-xl font-bold ">
                 Company Name:
               </label>
               <div className="relative">
-                <BriefcaseBusiness className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-200" />
+                <BriefcaseBusiness className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   id="companyName"
                   name="companyName"
@@ -191,7 +184,7 @@ export default function TestimonialForm() {
                   value={formData.companyName}
                   onChange={handleChange}
                   placeholder="Your Company Name"
-                  className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full pl-11 pr-4 py-4 bg-white/5 border border-black rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-[18px]"
                 />
               </div>
             </div>
@@ -199,12 +192,12 @@ export default function TestimonialForm() {
             <div className="flex flex-col gap-3">
               <label
                 htmlFor="companyWebsite"
-                className="block text-sm font-bold text-gray-200"
+                className="block text-xl font-bold "
               >
                 Company Website:
               </label>
               <div className="relative">
-                <Link className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-200" />
+                <Link className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   id="companyWebsite"
                   name="companyWebsite"
@@ -212,7 +205,7 @@ export default function TestimonialForm() {
                   value={formData.companyWebsite}
                   onChange={handleChange}
                   placeholder="https://example.com"
-                  className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full pl-11 pr-4 py-4 bg-white/5 border border-black rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-[18px]"
                 />
               </div>
             </div>
@@ -221,12 +214,12 @@ export default function TestimonialForm() {
             <div className="flex flex-col gap-3">
               <label
                 htmlFor="companyAddress"
-                className="block text-sm font-bold text-gray-200"
+                className="block text-xl font-bold "
               >
                 Company Address:
               </label>
               <div className="relative">
-                <MapPin className="absolute left-3 top-4  w-5 h-5 text-gray-200" />
+                <MapPin className="absolute left-3 top-4  w-5 h-5 text-gray-400" />
                 <textarea
                   name="companyAddress"
                   id="companyAddress"
@@ -234,7 +227,7 @@ export default function TestimonialForm() {
                   onChange={handleChange}
                   placeholder="123 Main Street, City, State, ZIP"
                   rows={3}
-                  className="w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                  className="w-full pl-11 pr-4 py-4 bg-white/5 border border-black rounded-lg  placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none text-[18px]"
                 />
               </div>
             </div>
@@ -242,12 +235,12 @@ export default function TestimonialForm() {
             <div className="flex flex-col gap-3">
               <label
                 htmlFor="profilePicture"
-                className="block text-sm font-bold text-gray-200"
+                className="block text-xl font-bold "
               >
                 Profile Picture:
               </label>
               <div className="relative">
-                <Image className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-200" />
+                <Image className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   id="profilePicture"
                   name="profilePicture"
@@ -255,17 +248,14 @@ export default function TestimonialForm() {
                   type="file"
                   accept="image/*"
                   onChange={handleFileChange}
-                  className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full pl-11 pr-4 py-4 bg-white/5 border border-black rounded-lg text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition text-[18px]"
                 />
               </div>
             </div>
 
             {/* Review  */}
             <div className="flex flex-col gap-3">
-              <label
-                htmlFor="review"
-                className="block text-sm font-bold text-gray-200"
-              >
+              <label htmlFor="review" className="block text-xl font-bold ">
                 Review:
               </label>
 
@@ -276,7 +266,7 @@ export default function TestimonialForm() {
                 onChange={handleChange}
                 placeholder="Share your experience with us..."
                 rows={8}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                className="w-full px-4 py-3 bg-white/5 border border-black rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none text-[18px]"
               />
             </div>
 
@@ -291,7 +281,7 @@ export default function TestimonialForm() {
           </div>
 
           {/* Footer */}
-          <div className="mt-6 text-center text-sm text-gray-400">
+          <div className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
             Your feedback is valuable to us and will be reviewed carefully
           </div>
         </div>

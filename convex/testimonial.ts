@@ -1,6 +1,7 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
+//anyone can submit
 export const submitTestimonial = mutation({
   args: {
     name: v.string(),
@@ -20,31 +21,51 @@ export const submitTestimonial = mutation({
   },
 });
 
+//admin only
 export const getAllTestimonials = query({
-  handler: async (ctx) => {
+  args: { adminId: v.id("admin") },
+  handler: async (ctx, args) => {
+    const admin = await ctx.db.get(args.adminId);
+    if (!admin) {
+      throw new Error("Unauthorized: Admin access required");
+    }
+
     return await ctx.db.query("testimonials").order("desc").collect();
   },
 });
 
 export const approveTestimonials = mutation({
-  args: { testimonialId: v.id("testimonials") },
+  args: { testimonialId: v.id("testimonials"), adminId: v.id("admin") },
   handler: async (ctx, args) => {
+    const admin = await ctx.db.get(args.adminId);
+    if (!admin) {
+      throw new Error("Unauthorized: Admin access required");
+    }
+
     await ctx.db.patch(args.testimonialId, { isApproved: true });
     return { success: true };
   },
 });
 
 export const rejectTetstimonial = mutation({
-  args: { testimonialId: v.id("testimonials") },
+  args: { testimonialId: v.id("testimonials"), adminId: v.id("admin") },
   handler: async (ctx, args) => {
+    const admin = await ctx.db.get(args.adminId);
+    if (!admin) {
+      throw new Error("Unauthorized: Admin access required");
+    }
     await ctx.db.patch(args.testimonialId, { isApproved: false });
     return { success: true };
   },
 });
 
 export const deleteTestimonial = mutation({
-  args: { testimonialId: v.id("testimonials") },
+  args: { testimonialId: v.id("testimonials"), adminId: v.id("admin") },
   handler: async (ctx, args) => {
+    const admin = await ctx.db.get(args.adminId);
+    if (!admin) {
+      throw new Error("Unauthorized: Admin access required");
+    }
     //1. Get the testimonial first to delete the profilepictureId
     const testimonial = await ctx.db.get(args.testimonialId);
     if (!testimonial) {

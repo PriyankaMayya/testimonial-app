@@ -17,6 +17,7 @@ export default defineSchema({
     storageId: v.id("_storage"),
     createdAt: v.number(),
   }),
+
   //testimonial table
   testimonials: defineTable({
     name: v.string(),
@@ -30,4 +31,9 @@ export default defineSchema({
   })
     .index("by_email", ["email"])
     .index("by_approved", ["isApproved"]),
+
+  settings: defineTable({ key: v.string(), value: v.boolean() }).index(
+    "by_key",
+    ["key"],
+  ),
 });
