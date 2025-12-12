@@ -5,7 +5,6 @@ import {
   Building2Icon,
   CheckCircle,
   Clock,
-
   Globe,
   Mail,
   MapPin,
@@ -45,7 +44,7 @@ export default function TestimonialModal({
     >
       <div className="bg-slate-900 rounded-2xl shadow-2xl border border-white/20 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* header  */}
-        <div className="sticky top-0 bg-slate-900/95 backdrop-blur-lg border-b border-white/10 p-6 flex justify-between">
+        <div className="sticky top-0 bg-slate-900 backdrop-blur-lg border-b border-white/10 p-6 flex justify-between">
           <div className="flex justify-between items-start gap-4">
             {imageUrl ? (
               <img
@@ -57,12 +56,12 @@ export default function TestimonialModal({
                 {testimonial.name.charAt(0).toUpperCase()}
               </div>
             )}
-            <div className="flex flex-col justify-center ">
+            <div className="flex flex-col justify-center">
               <h2 className="text-2xl font-bold text-white mb-2">
                 {testimonial.name}
               </h2>
               <span
-                className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                className={`px-3 py-1 rounded-full text-xs w-fit font-semibold ${
                   testimonial.isApproved
                     ? "bg-green-500/20 text-green-300"
                     : "bg-yellow-500/20 text-yellow-300"

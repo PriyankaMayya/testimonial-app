@@ -1,5 +1,28 @@
 import { v } from "convex/values";
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
+
+export async function verifyAdmin(ctx: any, adminId: string) {
+  const admin = await ctx.db.get(adminId);
+  if (!admin) {
+    throw new Error("Unauthorized: Invalid admin seesion");
+  }
+  return admin;
+}
+
+export const verifySession = query({
+  args: { adminId: v.id("admin") },
+  handler: async (ctx, args) => {
+    try {
+      const admin = await ctx.db.get(args.adminId);
+      if (!admin) {
+        return { valid: false };
+      }
+      return { valid: true, email: admin.email, id: admin._id };
+    } catch (error) {
+      return { valid: false };
+    }
+  },
+});
 
 export const login = mutation({
   args: { email: v.string(), password: v.string() },

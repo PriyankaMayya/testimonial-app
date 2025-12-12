@@ -16,7 +16,7 @@ export default function TestimonialCard({
   });
   const [isExpanded, setIsExpanded] = useState(false);
   return (
-    <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 p-6 hover:bg-white/15 transition cursor-pointer">
+    <div className="bg-black backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 p-6  transition cursor-pointer">
       {/* Status badge */}
       <div className="flex justify-between items-start mb-4">
         <span

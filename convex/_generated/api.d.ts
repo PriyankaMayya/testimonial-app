@@ -11,6 +11,7 @@
 import type * as auth from "../auth.js";
 import type * as files from "../files.js";
 import type * as seed from "../seed.js";
+import type * as settings from "../settings.js";
 import type * as testimonial from "../testimonial.js";
 
 import type {
@@ -23,6 +24,7 @@ declare const fullApi: ApiFromModules<{
   auth: typeof auth;
   files: typeof files;
   seed: typeof seed;
+  settings: typeof settings;
   testimonial: typeof testimonial;
 }>;
 
