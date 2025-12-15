@@ -15,8 +15,12 @@ export const getSettings = query({
 });
 
 export const toggleSettings = mutation({
-  args: { key: v.string() },
+  args: { key: v.string(), adminId: v.id("admin") },
   handler: async (ctx, args) => {
+    const admin = await ctx.db.get(args.adminId);
+    if (!admin) {
+      throw new Error("Unauthorized: Admin access required");
+    }
     const exisiting = await ctx.db
       .query("settings")
       .withIndex("by_key", (q) => q.eq("key", args.key))

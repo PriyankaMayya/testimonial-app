@@ -55,7 +55,10 @@ export default function DashboardPage() {
   };
   const handleToggleLink = async () => {
     try {
-      await toggleLinkVisibility({ key: "testimonialLinkVisible" });
+      await toggleLinkVisibility({
+        key: "testimonialLinkVisible",
+        adminId: admin.id,
+      });
     } catch (error) {
       console.error("Error toggling link visibility: ", error);
     }
